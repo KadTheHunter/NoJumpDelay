@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "nojumpdelay",
+	"version": "${version}",
+	"name": "NoJumpDelay",
+	"description": "Removes the delay when jumping, allowing for spacebar to be held instead of spammed, and improving the feel of movement/parkour",
+	"authors": [
+		"Flowng",
+		"Kadalyst"
+	],
+	"contact": {
+		"homepage": "https://kadthehunter.github.io",
+		"sources": "https://github.com/KadTheHunter/NoJumpDelay-Sourced"
+	},
+	"license": "MIT",
+	"icon": "assets/nojumpdelay/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"NoJumpDelay": [
+			"com.kadalyst.nojumpdelay.NoJumpDelay"
+		]
+	},
+	"mixins": [
+		"nojumpdelay.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.6",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
