@@ -1,0 +1,12 @@
+{
+  "category.nojumpdelay.main": "No Jump Delay",
+  "com.kadalyst.nojumpdelay.toggleMod": "Toggle Mod Status",
+  "com.kadalyst.nojumpdelay.modEnabled": "§7No Jump Delay is now: §aEnabled",
+  "com.kadalyst.nojumpdelay.modDisabled": "§7No Jump Delay is now: §cDisabled",
+  "text.autoconfig.nojumpdelay.title": "No Jump Delay",
+  "text.autoconfig.nojumpdelay.option.noJumpDelayEnabled": "No Jump Delay enabled",
+  "text.autoconfig.nojumpdelay.option.confirmation": "Notification on Toggle",
+  "text.autoconfig.nojumpdelay.option.confirmationType": "Notification Type",
+  "text.autoconfig.nojumpdelay.option.confirmationType.CHAT": "Chat",
+  "text.autoconfig.nojumpdelay.option.confirmationType.HUD": "HUD"
+}

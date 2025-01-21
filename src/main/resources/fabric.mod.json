@@ -10,23 +10,27 @@
 	],
 	"contact": {
 		"homepage": "https://kadthehunter.github.io",
-		"sources": "https://github.com/KadTheHunter/NoJumpDelay-Sourced"
+		"sources": "https://github.com/KadTheHunter/NoJumpDelay"
 	},
 	"license": "MIT",
 	"icon": "assets/nojumpdelay/icon.png",
-	"environment": "*",
+	"environment": "client",
 	"entrypoints": {
-		"NoJumpDelay": [
+		"client": [
 			"com.kadalyst.nojumpdelay.NoJumpDelay"
+		],
+		"modmenu": [
+			"com.kadalyst.nojumpdelay.config.ModMenuPlugin"
 		]
 	},
-	"mixins": [
-		"nojumpdelay.mixins.json"
-	],
 	"depends": {
 		"fabricloader": ">=0.15.6",
-		"minecraft": "~1.21",
+		"minecraft": ">=1.20.5",
 		"java": ">=21",
 		"fabric-api": "*"
+	},
+	"suggests": {
+		"cloth-config": "17.0.144",
+		"modmenu": "13.0.0"
 	}
 }
