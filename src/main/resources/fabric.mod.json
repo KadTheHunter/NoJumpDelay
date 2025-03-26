@@ -30,7 +30,7 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"cloth-config": "17.0.144",
-		"modmenu": "13.0.0"
+		"cloth-config": ">=17.0.144",
+		"modmenu": ">=13.0.0"
 	}
 }
