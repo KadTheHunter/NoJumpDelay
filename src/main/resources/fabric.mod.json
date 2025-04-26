@@ -32,5 +32,8 @@
 	"suggests": {
 		"cloth-config": ">=17.0.144",
 		"modmenu": ">=13.0.0"
-	}
+	},
+	"mixins": [
+		"nojumpdelay-mixins.json"
+	]
 }
