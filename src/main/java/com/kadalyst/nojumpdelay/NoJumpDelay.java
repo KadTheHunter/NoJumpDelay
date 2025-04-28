@@ -1,6 +1,7 @@
 package com.kadalyst.nojumpdelay;
 
 import com.kadalyst.nojumpdelay.config.NoJumpDelayConfig;
+import com.kadalyst.nojumpdelay.mixin.LivingEntityAccessor;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -12,12 +13,8 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
-import java.util.Random;
-
 @Environment(EnvType.CLIENT)
 public class NoJumpDelay implements ClientModInitializer {
-
-	int ticks = 0;
 
 	public static boolean isNoJumpDelayEnabled;
 
@@ -36,18 +33,9 @@ public class NoJumpDelay implements ClientModInitializer {
 				}
 			}
 			if(isNoJumpDelayEnabled) {
-				Random random = new Random();
-				++this.ticks;
 				MinecraftClient mc = MinecraftClient.getInstance();
 				if(mc.player != null) {
-					int randomNumber = random.nextInt(3) + 1;
-					if(this.ticks > randomNumber) {
-						if(mc.player != null && client.player != null && mc.options.jumpKey.isPressed() && mc.player.isOnGround()) {
-							mc.player.jump();
-						}
-
-						this.ticks = 0;
-					}
+					((LivingEntityAccessor) mc.player).setJumpingCooldown(0);
 				}
 			}
 		});
