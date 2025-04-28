@@ -6,7 +6,8 @@
 	"description": "Removes the delay when jumping, allowing for spacebar to be held instead of spammed, and improving the feel of movement/parkour",
 	"authors": [
 		"Flowng",
-		"Kadalyst"
+		"Kadalyst",
+		"xlzv / czxd"
 	],
 	"contact": {
 		"homepage": "https://kadthehunter.github.io",
