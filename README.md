@@ -1,11 +1,49 @@
-# NoJumpDelay
-Open-source copy of the NoJumpDelay mod, updated to the newest version of Minecraft.
+<h1 align="center">No Jump Delay: Enhanced</h1>
 
-[NoJumpDelay](https://modrinth.com/mod/no-jump-delay) is a fabric mod that removes the delay when jumping by spamming the jump input when spacebar is held. Originally made by Flowng and published to Modrinth, no source was provided, and it was not updated past 1.20.2.
+<p align="center">
+<a href="https://modrinth.com/mod/nojumpdelay-enhanced">
+<img alt="Current Modrinth Release" src="https://img.shields.io/modrinth/v/4XFSzxty?style=for-the-badge&logo=modrinth"/>
+</a>
+<a href="https://github.com/KadTheHunter/NoJumpDelay/releases">
+<img alt="Current GitHub Release" src="https://img.shields.io/github/v/release/KadTheHunter/NoJumpDelay?label=VERSION&style=for-the-badge&logo=github"/>
+</a>
+<br/><br/>
+<a>
+<img alt="Modrinth Downloads" src="https://img.shields.io/modrinth/dt/4XFSzxty?style=for-the-badge&logo=modrinth"/>
+</a>
+<br/><br/>
+<a href="https://buymeacoffee.com/kaddicus" target="_blank">
+<img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="31" width="164">
+</a>
+</p>
 
-I took it upon myself to decompile the 1.20.2 copy and update it to 1.20.4+; While I initially intended to only update the mod, I also found that the entire structure was a mess, with references to an older mod ID, and even an older (different) mod.
+No Jump Delay: Enhanced is a client-side mod for [Fabric](https://fabricmc.net).
 
-So, here it is now: No Jump Delay, open-sourced, updated, and at least *trying* to follow proper development guidelines. Enjoy :D
+[Fabric API](https://modrinth.com/mod/fabric-api) is required, [Mod Menu](https://modrinth.com/mod/modmenu) and [Cloth Config API](https://modrinth.com/mod/cloth-config) are optional, but strongly recommended.
 
-# License & Credit
-The original mod used the MIT license, so I used that here as well. Similarly, as the original mod was made by Flowng, I credited them in the [`fabric.mod.json`](https://github.com/KadTheHunter/NoJumpDelay/blob/main/src/main/resources/fabric.mod.json).
+---
+
+*Minecraft is slow and speed is life. With this mod, you can min-max your jumping by removing the ridiculous delay between accepted inputs.*
+
+**WARNING:** This mod may be considered a "cheat" on some servers (and detected as such)! Please check the server's rules before using this mod. _Use this at your own risk._
+
+## Usage
+This mod removes the delay when jumping by setting the Jumping Cooldown to 0, allowing the jump input to be held instead of spammed.
+
+The vanilla delay can be toggled back on with a keybind (default: Not Bound) or in the config using ModMenu.
+
+## Enhanced!
+This fork:
+
+- Open-sources the code
+- Updates the mod to 1.21+
+- Adds a config option to toggle the delay on and off
+- Adds a config option to toggle the confirmation on/off and confirmation type (Chat/HUD)
+- Adds translatable text strings
+- Adds a proper logo
+- Rewrites the core function of the mod to reduce cheati-ness, and improve reliability.
+
+## License & Credit
+Full credit to **Flowng** for creating the original [No Jump Delay](https://modrinth.com/mod/no-jump-delay) mod.
+
+This fork retains the MIT License used in the original.
