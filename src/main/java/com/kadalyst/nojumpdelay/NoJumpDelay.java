@@ -2,15 +2,23 @@ package com.kadalyst.nojumpdelay;
 
 import com.kadalyst.nojumpdelay.config.NoJumpDelayConfig;
 import com.kadalyst.nojumpdelay.mixin.LivingEntityAccessor;
+
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
+import net.minecraft.client.option.KeyBinding.Category;
 import net.minecraft.client.util.InputUtil;
+
+import net.minecraft.util.Identifier;
+
 import net.minecraft.text.Text;
+
 import org.lwjgl.glfw.GLFW;
 
 @Environment(EnvType.CLIENT)
@@ -22,7 +30,9 @@ public class NoJumpDelay implements ClientModInitializer {
 
 		NoJumpDelayConfig.load();
 
-		KeyBinding toggleNoJumpDelay = KeyBindingHelper.registerKeyBinding(new KeyBinding("com.kadalyst.nojumpdelay.toggleMod", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "category.nojumpdelay.main"));
+		Category keybindCategory = KeyBinding.Category.create(Identifier.of("nojumpdelay", "category"));
+
+		KeyBinding toggleNoJumpDelay = KeyBindingHelper.registerKeyBinding(new KeyBinding("com.kadalyst.nojumpdelay.toggleMod", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, keybindCategory));
 
 		ClientTickEvents.END_CLIENT_TICK.register((client) -> {
 			while(toggleNoJumpDelay.wasPressed()) {
