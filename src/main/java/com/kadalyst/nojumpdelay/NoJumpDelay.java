@@ -8,7 +8,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
@@ -32,14 +32,22 @@ public class NoJumpDelay implements ClientModInitializer {
 
 		Category keybindCategory = KeyMapping.Category.register(Identifier.fromNamespaceAndPath("nojumpdelay", "category"));
 
-		KeyMapping toggleNoJumpDelay = KeyBindingHelper.registerKeyBinding(new KeyMapping("com.kadalyst.nojumpdelay.toggleMod", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, keybindCategory));
+		KeyMapping toggleNoJumpDelay = KeyMappingHelper.registerKeyMapping(new KeyMapping("com.kadalyst.nojumpdelay.toggleMod", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, keybindCategory));
 
 		ClientTickEvents.END_CLIENT_TICK.register((client) -> {
 			while(toggleNoJumpDelay.consumeClick()) {
 				isNoJumpDelayEnabled = !isNoJumpDelayEnabled;
 				NoJumpDelayConfig.save();
 				if (client.player != null && NoJumpDelayConfig.confirmation) {
-					client.player.displayClientMessage(isNoJumpDelayEnabled ? Component.translatable("com.kadalyst.nojumpdelay.modEnabled") : Component.translatable("com.kadalyst.nojumpdelay.modDisabled"), NoJumpDelayConfig.confirmationType);
+					Component message = isNoJumpDelayEnabled
+							? Component.translatable("com.kadalyst.nojumpdelay.modEnabled")
+							: Component.translatable("com.kadalyst.nojumpdelay.modDisabled");
+
+					if (NoJumpDelayConfig.confirmationType) {
+						client.player.sendOverlayMessage(message);
+					} else {
+						client.player.sendSystemMessage(message);
+					}
 				}
 			}
 			if(isNoJumpDelayEnabled) {

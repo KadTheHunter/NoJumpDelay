@@ -2,8 +2,8 @@ package com.kadalyst.nojumpdelay.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
+import com.terraformersmc.modmenu.util.NullScreenFactory;
 
-import com.kadalyst.nojumpdelay.config.NoJumpDelayConfigScreen;
 import net.fabricmc.loader.api.FabricLoader;
 
 public class ModMenuPlugin implements ModMenuApi {
@@ -12,7 +12,7 @@ public class ModMenuPlugin implements ModMenuApi {
         if (FabricLoader.getInstance().isModLoaded("cloth-config")) {
             return NoJumpDelayConfigScreen::createConfigScreen;
         } else {
-            return null;
+            return new NullScreenFactory<>();
         }
     }
 }
