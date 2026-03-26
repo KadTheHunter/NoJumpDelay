@@ -25,14 +25,14 @@
 		]
 	},
 	"depends": {
-		"fabricloader": ">=0.17.3",
-		"minecraft": ">=1.21.9",
+		"fabricloader": ">=0.18.5",
+		"minecraft": ">=26.1",
 		"java": ">=21",
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"cloth-config": ">=20.0.148",
-		"modmenu": ">=16.0.0-rc.1"
+		"cloth-config": ">=26.1.154",
+		"modmenu": ">=18.0.0-alpha.8"
 	},
 	"mixins": [
       "nojumpdelay.mixins.json"
