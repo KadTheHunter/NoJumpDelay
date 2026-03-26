@@ -10,14 +10,14 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.client.option.KeyBinding.Category;
-import net.minecraft.client.util.InputUtil;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.KeyMapping.Category;
+import com.mojang.blaze3d.platform.InputConstants;
 
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.Identifier;
 
-import net.minecraft.text.Text;
+import net.minecraft.network.chat.Component;
 
 import org.lwjgl.glfw.GLFW;
 
@@ -30,22 +30,22 @@ public class NoJumpDelay implements ClientModInitializer {
 
 		NoJumpDelayConfig.load();
 
-		Category keybindCategory = KeyBinding.Category.create(Identifier.of("nojumpdelay", "category"));
+		Category keybindCategory = KeyMapping.Category.register(Identifier.fromNamespaceAndPath("nojumpdelay", "category"));
 
-		KeyBinding toggleNoJumpDelay = KeyBindingHelper.registerKeyBinding(new KeyBinding("com.kadalyst.nojumpdelay.toggleMod", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, keybindCategory));
+		KeyMapping toggleNoJumpDelay = KeyBindingHelper.registerKeyBinding(new KeyMapping("com.kadalyst.nojumpdelay.toggleMod", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, keybindCategory));
 
 		ClientTickEvents.END_CLIENT_TICK.register((client) -> {
-			while(toggleNoJumpDelay.wasPressed()) {
+			while(toggleNoJumpDelay.consumeClick()) {
 				isNoJumpDelayEnabled = !isNoJumpDelayEnabled;
 				NoJumpDelayConfig.save();
 				if (client.player != null && NoJumpDelayConfig.confirmation) {
-					client.player.sendMessage(isNoJumpDelayEnabled ? Text.translatable("com.kadalyst.nojumpdelay.modEnabled") : Text.translatable("com.kadalyst.nojumpdelay.modDisabled"), NoJumpDelayConfig.confirmationType);
+					client.player.displayClientMessage(isNoJumpDelayEnabled ? Component.translatable("com.kadalyst.nojumpdelay.modEnabled") : Component.translatable("com.kadalyst.nojumpdelay.modDisabled"), NoJumpDelayConfig.confirmationType);
 				}
 			}
 			if(isNoJumpDelayEnabled) {
-				MinecraftClient mc = MinecraftClient.getInstance();
+				Minecraft mc = Minecraft.getInstance();
 				if(mc.player != null) {
-					((LivingEntityAccessor) mc.player).setJumpingCooldown(0);
+					((LivingEntityAccessor) mc.player).setNoJumpDelay(0);
 				}
 			}
 		});

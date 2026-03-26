@@ -35,6 +35,6 @@
 		"modmenu": ">=16.0.0-rc.1"
 	},
 	"mixins": [
-		"nojumpdelay-mixins.json"
+      "nojumpdelay.mixins.json"
 	]
 }
